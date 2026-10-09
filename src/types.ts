@@ -1,5 +1,9 @@
 import type { ValueOf } from "type-fest";
 
-import type { NODE_ENV } from "@/constants";
+import type { NODE_ENV_KEY, NODE_ENV_VALUE } from "@/constants";
 
-export type NodeEnv = ValueOf<typeof NODE_ENV>;
+export type NodeEnvValue = ValueOf<typeof NODE_ENV_VALUE>;
+
+export interface NodeEnv {
+  [NODE_ENV_KEY]: NodeEnvValue;
+}

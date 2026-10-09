@@ -1,4 +1,5 @@
-export const NODE_ENV = {
+export const NODE_ENV_KEY = "NODE_ENV";
+export const NODE_ENV_VALUE = {
   DEVELOPMENT: "development",
   TESTING: "testing",
   STAGING: "staging",
