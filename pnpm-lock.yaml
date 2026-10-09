@@ -169,9 +169,6 @@ importers:
       '@arethetypeswrong/core':
         specifier: 0.18.5
         version: 0.18.5
-      '@ttsc/paths':
-        specifier: 0.30.4
-        version: 0.30.4
       '@types/node':
         specifier: 26.6.4
         version: 26.6.4
@@ -607,9 +604,6 @@ packages:
 
   '@rolldown/pluginutils@1.0.1':
     resolution: {integrity: sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==}
-
-  '@ttsc/paths@0.30.4':
-    resolution: {integrity: sha512-3gQk+h2RnEm+7ULdWMsbn4if5tO2PzKrnwOnGG9LuWG/JlvvPf097NuPVZqERQ/mwJUwx80yxdCPmjGTrF7Q+Q==}
 
   '@types/chai@5.2.3':
     resolution: {integrity: sha512-Mw558oeA9fFbv65/y4mHtXDs9bPnFMZAL/jxdPFUpOHHIXX91mcgEHbS5Lahr+pwZFR8A7GQleRWeI6cGFC2UA==}
@@ -1587,8 +1581,6 @@ snapshots:
     optional: true
 
   '@rolldown/pluginutils@1.0.1': {}
-
-  '@ttsc/paths@0.30.4': {}
 
   '@types/chai@5.2.3':
     dependencies:
