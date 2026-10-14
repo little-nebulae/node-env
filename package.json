@@ -23,10 +23,12 @@
     "lint:fix": "oxlint --fix --disable-nested-config",
     "check": "pnpm run lint && pnpm run fmt:check",
     "fix": "pnpm run lint:fix && pnpm run fmt",
-    "test": "vitest run"
+    "test": "vitest run",
+    "try": "oxnode ./src/try.ts"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.5",
+    "@oxc-node/cli": "0.1.6",
     "@types/node": "26.6.5",
     "oxfmt": "0.72.0",
     "oxlint": "1.87.0",
