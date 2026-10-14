@@ -9,4 +9,5 @@ export const NODE_ENV_VALUE = {
 export const ENV_FILE_NAME = {
   DEFAULT: ".env",
   LOCAL: ".env.local",
+  EXAMPLE: ".env.example",
 } as const;
