@@ -28,6 +28,9 @@
   },
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.5",
+    "@little-nebulae/error": "1.4.0",
+    "@little-nebulae/result": "1.4.0",
+    "@little-nebulae/system-error": "2.1.0",
     "@oxc-node/cli": "0.1.6",
     "@types/node": "26.6.5",
     "oxfmt": "0.72.0",
@@ -41,6 +44,9 @@
     "zod": "4.6.7"
   },
   "peerDependencies": {
+    "@little-nebulae/error": "^1.4.0",
+    "@little-nebulae/result": "^1.4.0",
+    "@little-nebulae/system-error": "^2.1.0",
     "type-fest": "^5.0.0",
     "zod": "^4.6.0"
   },
