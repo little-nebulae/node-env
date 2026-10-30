@@ -16,7 +16,7 @@ import { cwd, loadEnvFile } from "node:process";
 
 import type { ENV_FILE_ENUM } from "@/constants";
 
-export type EnvFileName = LiteralUnion<
+export type EnvFile = LiteralUnion<
   | ValueOf<Except<typeof ENV_FILE_ENUM, "LOCAL">>
   | ValueOf<typeof ENV_FILE_ENUM.LOCAL>,
   string
@@ -24,12 +24,12 @@ export type EnvFileName = LiteralUnion<
 
 export function nodeLoadEnvFile({
   parentDirPath = cwd(),
-  envFileName = ".env.local",
+  envFile = ".env.local",
 }: {
   parentDirPath?: string;
-  envFileName?: EnvFileName;
+  envFile?: EnvFile;
 }) {
-  const path = join(parentDirPath, envFileName);
+  const path = join(parentDirPath, envFile);
   return attempt({
     tryFn: () => loadEnvFile(path),
     catchFn: (error) => {
@@ -54,9 +54,9 @@ export function nodeLoadEnvFileList({
   envFileList = [".env.local", ".env"],
 }: {
   parentDirPath?: string;
-  envFileList?: [EnvFileName, ...EnvFileName[]];
+  envFileList?: [EnvFile, ...EnvFile[]];
 }) {
   return envFileList.map((envFile) => ({
-    [envFile]: nodeLoadEnvFile({ parentDirPath, envFileName: envFile }),
+    [envFile]: nodeLoadEnvFile({ parentDirPath, envFile }),
   }));
 }
