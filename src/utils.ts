@@ -54,7 +54,7 @@ export function nodeLoadEnvFileList({
   envFileList = [".env.local", ".env"],
 }: {
   parentDirPath?: string;
-  envFileList?: [EnvFile, ...EnvFile[]];
+  envFileList?: [EnvFile, EnvFile, ...EnvFile[]];
 }) {
   return envFileList.map((envFile) => ({
     [envFile]: nodeLoadEnvFile({ parentDirPath, envFile }),
