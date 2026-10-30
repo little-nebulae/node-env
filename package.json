@@ -53,12 +53,12 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "12.11.2",
+      "version": "12.16.1",
       "onFail": "warn"
     }
   },
   "engines": {
     "node": "^24.0.0"
   },
-  "packageManager": "pnpm@12.11.2"
+  "packageManager": "pnpm@12.16.1"
 }
