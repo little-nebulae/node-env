@@ -48,3 +48,15 @@ export function nodeLoadEnvFile({
     },
   });
 }
+
+export function nodeLoadEnvFileList({
+  parentDirPath = cwd(),
+  envFileList = [".env.local", ".env"],
+}: {
+  parentDirPath?: string;
+  envFileList?: [EnvFileName, ...EnvFileName[]];
+}) {
+  return envFileList.map((envFile) => ({
+    [envFile]: nodeLoadEnvFile({ parentDirPath, envFileName: envFile }),
+  }));
+}
