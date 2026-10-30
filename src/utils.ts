@@ -16,16 +16,18 @@ import { cwd, loadEnvFile } from "node:process";
 
 import type { ENV_FILE_ENUM } from "@/constants";
 
+export type EnvFileName = LiteralUnion<
+  | ValueOf<Except<typeof ENV_FILE_ENUM, "LOCAL">>
+  | ValueOf<typeof ENV_FILE_ENUM.LOCAL>,
+  string
+>;
+
 export function nodeLoadEnvFile({
   parentDirPath = cwd(),
   envFileName = ".env.local",
 }: {
   parentDirPath?: string;
-  envFileName?: LiteralUnion<
-    | ValueOf<Except<typeof ENV_FILE_ENUM, "LOCAL">>
-    | ValueOf<typeof ENV_FILE_ENUM.LOCAL>,
-    string
-  >;
+  envFileName?: EnvFileName;
 }) {
   const path = join(parentDirPath, envFileName);
   return attempt({
