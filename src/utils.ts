@@ -1,22 +1,31 @@
-import type { LiteralUnion, ValueOf } from "type-fest";
+import type { Except, LiteralUnion, ValueOf } from "type-fest";
 
-import { composeErrorMessage, UnexpectedError } from "@little-nebulae/error";
-import { attempt } from "@little-nebulae/result";
 import {
-  isErrnoException,
-  NoEntrySystemError,
-} from "@little-nebulae/system-error";
+  composeErrorMessage,
+  isError,
+  UnexpectedError,
+} from "@little-nebulae/error";
+import {
+  isNodeErrnoException,
+  isNodeNoEntrySystemErrorCause,
+  NodeNoEntrySystemError,
+} from "@little-nebulae/node-errors";
+import { attempt } from "@little-nebulae/result";
 import { join } from "node:path";
 import { cwd, loadEnvFile } from "node:process";
 
-import type { ENV_FILE_NAME } from "@/constants";
+import type { ENV_FILE_ENUM } from "@/constants";
 
-export function loadDotEnvFile({
+export function nodeLoadEnvFile({
   parentDirPath = cwd(),
   envFileName = ".env.local",
 }: {
   parentDirPath?: string;
-  envFileName?: LiteralUnion<ValueOf<typeof ENV_FILE_NAME>, string>;
+  envFileName?: LiteralUnion<
+    | ValueOf<Except<typeof ENV_FILE_ENUM, "LOCAL">>
+    | ValueOf<typeof ENV_FILE_ENUM.LOCAL>,
+    string
+  >;
 }) {
   const path = join(parentDirPath, envFileName);
   return attempt({
@@ -24,15 +33,10 @@ export function loadDotEnvFile({
     catchFn: (error) => {
       const operation = "load dot env file";
       const meta = { path };
-      if (isErrnoException(error)) {
-        return new NoEntrySystemError({
-          message: composeErrorMessage({
-            operation,
-            reason: `${path} doesn't exist or it's a dangling symbolic link.`,
-          }),
-          cause: error,
-          meta,
-        });
+      if (isError(error) && isNodeErrnoException(error)) {
+        if (isNodeNoEntrySystemErrorCause(error)) {
+          return new NodeNoEntrySystemError({ cause: error });
+        }
       }
       return new UnexpectedError({
         message: composeErrorMessage({ operation }),
