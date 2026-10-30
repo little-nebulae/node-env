@@ -172,12 +172,12 @@ importers:
       '@little-nebulae/error':
         specifier: 1.4.0
         version: 1.4.0(type-fest@5.10.0)
+      '@little-nebulae/node-errors':
+        specifier: 0.1.0
+        version: 0.1.0(@little-nebulae/error@1.4.0(type-fest@5.10.0))(@types/node@26.6.6)(type-fest@5.10.0)
       '@little-nebulae/result':
         specifier: 1.4.0
         version: 1.4.0
-      '@little-nebulae/system-error':
-        specifier: 2.1.0
-        version: 2.1.0(@little-nebulae/error@1.4.0(type-fest@5.10.0))(type-fest@5.10.0)
       '@oxc-node/cli':
         specifier: 1.0.1
         version: 1.0.1
@@ -239,15 +239,15 @@ packages:
     peerDependencies:
       type-fest: ^5.0.0
 
+  '@little-nebulae/node-errors@0.1.0':
+    resolution: {integrity: sha512-a3Qd7fF96LczI8eg/XKGPjdzcwRc9zG0jwteVwL8twBkwHawPEQB6ERSQ2WVOvfsrZGDDMEc9UVXM1aCbCC1xg==}
+    peerDependencies:
+      '@little-nebulae/error': ^1.0.0
+      '@types/node': ^26.0.0
+      type-fest: ^5.0.0
+
   '@little-nebulae/result@1.4.0':
     resolution: {integrity: sha512-ItjYTaBxSXQf1+bxL6hqpySq2oG+STTCrGLxnHAZKNRrxfVt6MoC0LZvxKaOKB/VNr0uNfKvX/cKHJiWDYb5ZQ==}
-
-  '@little-nebulae/system-error@2.1.0':
-    resolution: {integrity: sha512-VyZt9lgYzyq9q7dznAqwD3Pm167HFumuTscCtajEQtfAIlay6rbd6/MB7/xPQt71HOyXzWxYKF/NDCi//KjlSQ==}
-    engines: {node: ^24.0.0}
-    peerDependencies:
-      '@little-nebulae/error': ^1.4.0
-      type-fest: ^5.0.0
 
   '@loaderkit/resolve@1.0.6':
     resolution: {integrity: sha512-G8FdIoF5CypfwmD9rl8BXod5HDn8JqB0CCNBXDTaRZ+yRYhARrrSToX1zg1zy9jX3zLqigsELwhT4gNtkdQAUg==}
@@ -1439,12 +1439,13 @@ snapshots:
     dependencies:
       type-fest: 5.10.0
 
-  '@little-nebulae/result@1.4.0': {}
-
-  '@little-nebulae/system-error@2.1.0(@little-nebulae/error@1.4.0(type-fest@5.10.0))(type-fest@5.10.0)':
+  '@little-nebulae/node-errors@0.1.0(@little-nebulae/error@1.4.0(type-fest@5.10.0))(@types/node@26.6.6)(type-fest@5.10.0)':
     dependencies:
       '@little-nebulae/error': 1.4.0(type-fest@5.10.0)
+      '@types/node': 26.6.6
       type-fest: 5.10.0
+
+  '@little-nebulae/result@1.4.0': {}
 
   '@loaderkit/resolve@1.0.6':
     dependencies:
